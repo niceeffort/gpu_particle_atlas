@@ -15,7 +15,7 @@ vec4 id = texelFetch(IDs, ivec2(int(INDEX), 0), 0);
 CUSTOM.z = id.a / (4.0 * 14.0); 
 ``` 
 6) This value will be converted to a UV coordinate in the CanvasItem shader.
-7) Create a [CanvasItem shader](https://docs.godotengine.org/en/4.4/tutorials/shaders/shader_reference/canvas_item_shader.html) and set the horizontal and vertical frame counts.
+7) Create a [CanvasItemMaterial](https://docs.godotengine.org/en/4.4/classes/class_canvasitemmaterial.html) and set the horizontal and vertical frame counts.
 <img src="readme/canvas_item.png" alt="CanvasItem" width="200" />
 
 ## Credits
