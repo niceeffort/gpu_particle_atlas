@@ -350,22 +350,28 @@ void process() {
 	float base_angle = dynamic_params.angle;
 	base_angle += CUSTOM.y * LIFETIME * dynamic_params.angular_velocity;
 	CUSTOM.x = base_angle * degree_to_rad;
-   COLOR = params.color;
+   	COLOR = params.color;
 	TRANSFORM[0] = vec4(cos(CUSTOM.x), -sin(CUSTOM.x), 0.0, 0.0);
 	TRANSFORM[1] = vec4(sin(CUSTOM.x), cos(CUSTOM.x), 0.0, 0.0);
 	TRANSFORM[2] = vec4(0.0, 0.0, 1.0, 0.0);
 	TRANSFORM[3].z = 0.0;
-//	params.scale *= length(final_velocity)/100.0;
+
 
 	TRANSFORM[0].xyz *= sign(params.scale.x) * max(abs(params.scale.x), 0.001);
 	TRANSFORM[1].xyz *= sign(params.scale.y) * max(abs(params.scale.y), 0.001);
 	TRANSFORM[2].xyz *= sign(params.scale.z) * max(abs(params.scale.z), 0.001);
 	
-	// 
-	//CUSTOM.z = params.animation_offset + lifetime_percent * params.animation_speed;
-							
+	
+	// Read the id from the ID image						
 	vec4 id = texelFetch(IDs, ivec2(int(INDEX), 0), 0);
-	CUSTOM.z = id.a / (4.0 * 14.0); //These values come from the Anim H frames and V frames for the Canvas Item Material
+
+	// Store the ID as a value between 0 and 1 in the CUSTOM.z component.
+	// This is done by dividing the ID by the maximum possible ID value (horizontal_frames * vertical_frames = total_frames).
+	// This value will be converted to a UV coordinate in the canvas item shader.
+	// The values of 4.0 and 14.0 are specific to the sprite sheet used (4 columns and 14 rows)
+	// These are stored in the CanvasItem shader as constants for efficiency.
+	// If you change the sprite sheet, make sure to update these values in both shaders.
+	CUSTOM.z = id.a / (4.0 * 14.0); 
 	
 	if (CUSTOM.y > CUSTOM.w) {
 		ACTIVE = false;

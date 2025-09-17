@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dna8ulmn32e6p"]
+[gd_scene load_steps=4 format=3 uid="uid://dna8ulmn32e6p"]
 
 [ext_resource type="PackedScene" uid="uid://bxkgtxnboulgc" path="res://atlas_particles.tscn" id="1_7f44u"]
-[ext_resource type="Script" path="res://main.gd" id="1_atl2q"]
+[ext_resource type="Script" uid="uid://cen5trsn6i20u" path="res://main.gd" id="1_atl2q"]
+[ext_resource type="Texture2D" uid="uid://dvlgfv5urud6y" path="res://hat.png" id="2_h2yge"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_atl2q")
 
+[node name="Hat" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(640, 448)
+scale = Vector2(3, 3)
+texture = ExtResource("2_h2yge")
+
 [node name="AtlasParticles" parent="." instance=ExtResource("1_7f44u")]
-position = Vector2(573, 455)
+position = Vector2(640, 400)
+amount = 52
+explosiveness = 0.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxkgtxnboulgc"]
 
-[ext_resource type="Shader" path="res://atlas_particles_particles.gdshader" id="1_t4vj0"]
+[ext_resource type="Shader" uid="uid://cl8b3towc7u3w" path="res://atlas_particles_particles.gdshader" id="1_t4vj0"]
 [ext_resource type="Texture2D" uid="uid://bgm58u03qo4le" path="res://playing_cards.png" id="2_jyv7t"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d557l"]
@@ -54,7 +54,7 @@ shader_parameter/gravity = Vector3(0, 98, 0)
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_d557l")
 amount = 50
-process_material = SubResource("ShaderMaterial_nofof")
 texture = ExtResource("2_jyv7t")
 lifetime = 10.0
 explosiveness = 0.66
+process_material = SubResource("ShaderMaterial_nofof")
